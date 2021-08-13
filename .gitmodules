@@ -1,0 +1,4 @@
+[submodule "extra-addons/enterprise"]
+	path = extra-addons/enterprise
+	url = git@git.indboo.com:Indboo-dev/enterprise.git
+	branch = 14.0
