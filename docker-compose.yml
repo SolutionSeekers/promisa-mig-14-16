@@ -1,0 +1,36 @@
+version: '3.4'
+services:
+  odoo:
+    image: llacox/odoo:promisa-14.0
+    volumes:
+      - data:/var/lib/odoo
+    command: --workers 2 --limit-time-cpu 1800 --limit-time-real 1800
+    ports:
+      - 49161:8069
+      - 49162:8072
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+  db:
+    image: postgres:10
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+    restart: unless-stopped
+volumes:
+  data:
+    name: promisa-test_data
+    external: true
+  db-data:
+    name: promisa-test_db_data
+    external: true
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet:  10.103.53.1/28
