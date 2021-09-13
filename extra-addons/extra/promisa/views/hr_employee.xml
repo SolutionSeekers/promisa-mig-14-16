@@ -3,6 +3,7 @@
     <record id="hr_employee_form_inherit_promisa" model="ir.ui.view">
         <field name="name">hr.employee.inherit.promisa</field>
         <field name="model">hr.employee</field>
+        <field name="priority">21</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='address_home_id']" position="attributes">
@@ -11,7 +12,7 @@
             <xpath expr="//field[@name='address_home_id']" position="after">
                 <field name="address_char"/>
             </xpath>
-            <xpath expr="//field[@name='pin']" position="after">
+            <xpath expr="//group[@name='identification_group']" position="inside">
                 <field name="locker_no"/>
             </xpath>
             <xpath expr="//page[@name='info_cdfi']" position="replace">
