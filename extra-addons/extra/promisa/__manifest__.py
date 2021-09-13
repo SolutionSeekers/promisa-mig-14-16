@@ -26,13 +26,16 @@
         'stock',
         'purchase',
         'sale',
+        'nomina_cfdi_ee',
     ],
     "data": [
         # Main Configuration
         # Data
         # Security
+        'security/security.xml',
         # Views
         'views/purchase_order.xml',
+        'views/hr_employee.xml',
         # Reports
         # Wizards (One Per Wizard)
         # Stages Data
@@ -46,4 +49,3 @@
     "application": True,
     "installable": True,
 }
-
