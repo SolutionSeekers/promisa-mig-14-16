@@ -37,6 +37,8 @@
         'views/purchase_order.xml',
         'views/hr_employee.xml',
         # Reports
+        'reports/invoice.xml',
+        'reports/remision.xml',
         # Wizards (One Per Wizard)
         # Stages Data
     ],
