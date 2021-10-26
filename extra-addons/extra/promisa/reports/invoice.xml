@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_invoice_dmd" inherit_id="account.report_invoice_document" priority="18">
+    <template id="report_invoice_dmd" inherit_id="account.report_invoice_document" priority="15">
         <xpath expr="//address" position="replace">
             <strong><span>Billing Address:</span></strong>
             <address t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
@@ -14,7 +14,7 @@
         <xpath expr="//div[@name='reference']" position="replace">
             <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
                 <strong>P.O. Number:</strong>
-                <p class="m-0" t-field="o.ref"/>
+                <p class="m-0" t-field="o.po_num"/>
             </div>
         </xpath>
         <xpath expr="//th[@name='th_description']" position="replace">
@@ -84,7 +84,7 @@
                             <span style="font-size:12px;">PLEASE CHECK IF YOUR MATERIAL IS IN GOOD CONDITION AND COMPLETE BEFORE SIGN</span>
                         </td>
                         <td style="width:50%;padding:5px;">
-                            <span style="font-size:12px;">POR FAVOR CHEQUE QUE SU MATERIAL ESTÉ COMPLETO Y EN BUENA CONDICIÓN ANTES DE FIRMAR</span>
+                            <span style="font-size:12px;">POR FAVOR REVISE QUE SU MATERIAL ESTÉ COMPLETO Y EN BUENA CONDICIÓN ANTES DE FIRMAR</span>
                         </td>
                     </tr>
                     <tr>

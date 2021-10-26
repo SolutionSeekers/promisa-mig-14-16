@@ -36,6 +36,9 @@
         # Views
         'views/purchase_order.xml',
         'views/hr_employee.xml',
+        'views/sale_order.xml',
+        'views/stock_picking.xml',
+        'views/account_move.xml',
         # Reports
         'reports/invoice.xml',
         'reports/remision.xml',
