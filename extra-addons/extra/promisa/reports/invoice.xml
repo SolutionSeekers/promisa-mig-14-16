@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_dmd" inherit_id="account.report_invoice_document" priority="15">
+        <xpath expr="//address" position="replace">
+            <strong><span>Billing Address:</span></strong>
+            <address t-field="o.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+        </xpath>
+        <xpath expr="//div[@name='invoice_date']" position="after">
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.property_payment_term_id" name="terms">
+                <strong>Terms:</strong>
+                <p class="m-0" t-field="o.partner_id.property_payment_term_id"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@name='reference']" position="replace">
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
+                <strong>P.O. Number:</strong>
+                <p class="m-0" t-field="o.po_num"/>
+            </div>
+        </xpath>
+        <xpath expr="//th[@name='th_description']" position="replace">
+            <th name="th_part_number" class="text-left"><span>Part Number</span></th>
+            <th name="th_description" class="text-left"><span>Description</span></th>
+        </xpath>
+        <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
+            <td name="account_invoice_line_name"><span t-field="line.product_id.default_code"/></td>
+            <td name="account_invoice_line_name"><span t-field="line.product_id.name"/></td>
+        </xpath>
+        <xpath expr="//div[@id='total']/div//table//t" position="replace">
+            <t t-foreach="o.amount_by_group" t-as="amount_by_group">
+                <tr style="">
+                    <t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and o.amount_untaxed == amount_by_group[2]">
+                        <td><strong><span class="text-nowrap" style="color:black;">TAX</span></strong></td>
+                        <td class="text-right o_price_total">
+                            <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                        </td>
+                    </t>
+                    <t t-else="">
+                        <td>
+                            <strong><span class="text-nowrap" style="color:black;">TAX</span></strong>
+                            <span class="text-nowrap"> on
+                                <t t-esc="amount_by_group[4]"/>
+                            </span>
+                        </td>
+                        <td class="text-right o_price_total">
+                            <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                        </td>
+                    </t>
+                </tr>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='total']/div//table" position="inside">
+            <tr class="border-black o_total">
+                <td class="text-right" colspan="2">
+                    <span class="text-nowrap" t-field="o.amount_words"/>
+                </td>
+            </tr>
+
+            <t t-set="company" t-value="o.company_id"/>
+            <div class="footer">
+                <hr style="border-top: 2px solid #444;"/>
+                <div class="text-center">
+                    <ul class="list-inline">
+                        <li t-if="company.phone" class="list-inline-item"><i class="fa fa-phone" role="img" aria-label="Phone" title="Phone"/> <span class="o_force_ltr" t-field="company.phone"/></li>
+                        <li t-if="company.email" class="list-inline-item"><i class="fa fa-at" role="img" aria-label="Email" title="Email"/> <span t-field="company.email"/></li>
+                        <li t-if="company.website" class="list-inline-item"><i class="fa fa-globe" role="img" aria-label="Website" title="Website"/> <span t-field="company.website"/></li>
+                        <li t-if="company.vat" class="list-inline-item"><i class="fa fa-building-o" role="img" aria-label="Fiscal number"/><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                    </ul>
+                    <div t-field="company.report_footer"/>
+                    <hr style="border-top: 2px solid #444;"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='qrcode']" position="replace">
+            <div id="qrcode" t-if="o.display_qr_code">
+                <p t-if="qr_code_urls.get(o.id)">
+                    <strong class="text-center">Scan me with your banking app.</strong><br/><br/>
+                    <img class="border border-dark rounded" t-att-src="qr_code_urls[o.id]"/>
+                </p>
+            </div>
+            <div style="position:absolute; top:700px; left:0; text-align:center;">
+                <table style="width:80%; border-collapse:collapse; margin-left:10%;" >
+                    <tr>
+                        <td style="width:50%;padding:5px;">
+                            <span style="font-size:12px;">PLEASE CHECK IF YOUR MATERIAL IS IN GOOD CONDITION AND COMPLETE BEFORE SIGN</span>
+                        </td>
+                        <td style="width:50%;padding:5px;">
+                            <span style="font-size:12px;">POR FAVOR REVISE QUE SU MATERIAL ESTÉ COMPLETO Y EN BUENA CONDICIÓN ANTES DE FIRMAR</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%;padding:5px;" colspan="2">
+                            <strong><span style="font-size:12px;">PLEASE DO NOT STAND OR JUMP ON PALLETS</span></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%;padding:5px;" colspan="2">
+                            <strong><span style="font-size:12px;">NO USE EL PALLET PARA CAMINAR SOBRE ÉL</span></strong>
+                        </td>
+                    </tr>
+                </table>
+                <strong>
+                    <span>
+                        <br/>NOTES:<br/>Please send your payment checks to the following address:12570 Weaver Rd. Horizon City, TX, 79928
+                    </span>
+                </strong>
+            </div>
+        </xpath>
+    </template>
+</odoo>
+
