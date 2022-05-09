@@ -39,9 +39,11 @@
         'views/sale_order.xml',
         'views/stock_picking.xml',
         'views/account_move.xml',
+        'views/treatment_certificate.xml',
         # Reports
         'reports/invoice.xml',
         'reports/remision.xml',
+        'reports/certificado_tratamiento.xml',
         # Wizards (One Per Wizard)
         # Stages Data
     ],
