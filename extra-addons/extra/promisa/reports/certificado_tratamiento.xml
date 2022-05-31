@@ -10,8 +10,8 @@
         <field name="orientation">Landscape</field>
         <field name="margin_top">7</field>
         <field name="margin_bottom">7</field>
-        <field name="margin_left">5</field>
-        <field name="margin_right">5</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
         <field name="dpi">96</field>
     </record>
 
@@ -42,7 +42,7 @@
                         <table style="border:0px solid black;">
                             <tr style="border:0px solid green;">
                                 <td style="border:0px solid red; width:10%;">
-                                    <div style='width:100%; height:100px; background-image:url("https://promisa.int-a.indboo.net/web/image/16136?unique=c9bec0ee8aa5d082ddceabc36a529f85b787f1af"); background-size:contain; background-repeat:no-repeat;'/>
+                                    <div style='width:100%; height:150px; padding-left:25px; background-image:url("https://promisa.int-a.indboo.net/web/image/18598?unique=f9e58bdb579e9950bd154d1c8fb14be0e8e20711"); background-size:contain; background-repeat:no-repeat;'/>
                                 </td>
                                 <td style="border:0px solid red; text-align:center; width:47%; font-size:14px;">
                                     <h3>PROVEEDORA DE MATERIAL INDUSTRIAL SA DE CV</h3>
@@ -81,7 +81,7 @@
                                             <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Municipio</strong></td><td><span>JUAREZ</span></td></tr>
                                             <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Estado</strong></td><td><span>CHIHUAHUA</span></td></tr>
                                             <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Teléfono</strong></td><td><span>(656) 687-51-50</span></td></tr>
-                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Email</strong></td><td><span>promisacv@hotmail.com</span></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Email</strong></td><td><span>apuse@dmdpromi.net</span></td></tr>
                                         </table>
                                     </div>
                                 </td>
@@ -93,13 +93,35 @@
                                         <table>
                                             <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Razón Social</strong></td><td><span t-esc="o.partner_id.name"/></td></tr>
                                             <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">R.F.C.</strong></td><td><span t-esc="o.partner_id.vat"/></td></tr>
-                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Domicilio</strong></td><td><span t-esc="o.partner_id.street_name"/>
-                                            <t t-if="o.partner_id.street_number"><span t-esc="' #' + o.partner_id.street_number"/></t></td></tr>
-                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Colonia</strong></td><td><span t-esc="o.partner_id.l10n_mx_edi_colony"/></td></tr>
-                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Municipio</strong></td><td><span tesc="o.partner_id.city_id.name"/></td></tr>
-                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Estado</strong></td><td><span tesc="o.partner_id.state_id.name"/></td></tr>
-                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Teléfono</strong></td><td><span tesc="o.partner_id.phone"/></td></tr>
-                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Email</strong></td><td><span tesc="o.partner_id.email"/></td></tr>
+                                            
+                                            <tr style="font-size:10px;">
+                                                <td style="width:20%;"><strong style="line-height:150%;">Domicilio</strong></td>
+                                                <td>
+                                                    <t t-if="o.partner_id.country_id.code == 'US'"><t t-if="o.partner_id.street_number"><span t-esc="o.partner_id.street_number"/></t></t>
+                                                    <span t-esc="o.partner_id.street_name"/>
+                                                    <t t-if="o.partner_id.country_id.code == 'MX'"><t t-if="o.partner_id.street_number"><span t-esc="' #' + o.partner_id.street_number"/></t></t>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr style="font-size:10px;">
+                                                <td style="width:20%;"><strong style="line-height:150%;">Colonia</strong></td>
+                                                <td>
+                                                    <span t-esc="o.partner_id.street2"/>
+                                                    <span t-esc="o.partner_id.zip"/>
+                                                </td>
+                                            </tr>
+                                            <tr style="font-size:10px;">
+                                                <td style="width:20%;"><strong style="line-height:150%;">Municipio</strong></td>
+                                                <td>
+                                                    <t t-if="o.partner_id.city_id"><span t-esc="o.partner_id.city_id.name"/></t>
+                                                    <t t-else="">
+                                                        <t t-if="o.partner_id.city"><span t-esc="o.partner_id.city"/></t>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Estado</strong></td><td><span t-esc="o.partner_id.state_id.name"/></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Teléfono</strong></td><td><span t-esc="o.partner_id.phone"/></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Email</strong></td><td><span t-esc="o.partner_id.email"/></td></tr>
                                         </table>
                                     </div>
                                 </td>
@@ -189,10 +211,10 @@
                                     <t t-else=""><span>( <![CDATA[&nbsp;&nbsp;]]> ) RECONSTRUIDO</span></t><br/>
                                 </td>
                                 <td style="border:1px solid black; text-align:center; padding:10px; width:20%;">
-                                    <span t-esc="str(o.treatment_start.strftime('%H:%M:%S')) + ' A ' + str(o.treatment_reach.strftime('%H:%M:%S')) + ' (horas)= ' + str(o.treatment_reach-o.treatment_start)"/>
+                                    <span t-esc="str(context_timestamp(o.treatment_start).strftime('%H:%M:%S')) + ' A ' + str(context_timestamp(o.treatment_reach).strftime('%H:%M:%S')) + ' (horas)= ' + str(o.treatment_reach-o.treatment_start)"/>
                                 </td>
                                 <td style="border:1px solid black; text-align:center; padding:10px; width:20%;">
-                                    <span t-esc="str(o.treatment_reach.strftime('%H:%M:%S')) + ' A ' + str(o.treatment_end.strftime('%H:%M:%S')) + ' (horas)= ' + str(o.treatment_end-o.treatment_reach)"/>
+                                    <span t-esc="str(context_timestamp(o.treatment_reach).strftime('%H:%M:%S')) + ' A ' + str(context_timestamp(o.treatment_end).strftime('%H:%M:%S')) + ' (horas)= ' + str(o.treatment_end-o.treatment_reach)"/>
                                 </td>
                             </tr>
                         </table>
@@ -218,7 +240,7 @@
                                 </td>
                                 <td style="width:33%; text-align:center;">
                                     <div style="margin-left:30%; width:70%; height:30px; border:1px solid black; background-color:black; color:white;">VOLUMEN EN METROS CÚBICOS</div>
-                                    <div style="margin-left:30%; width:70%; height:50px; border:1px solid black; line-height:49px;"><span t-esc="str(o.volumen)"/></div>
+                                    <div style="margin-left:30%; width:70%; height:50px; border:1px solid black; line-height:49px;"><span t-esc="str(o.volumen_float)"/></div>
                                     
                                     <div style="margin-left:30%; width:70%; height:30px; border:1px solid black; margin-top:10px; background-color:black; color:white;">TEMPERATURA DEL TRATAMIENTO</div>
                                     <div style="margin-left:30%; width:70%; height:50px; border:1px solid black; line-height:49px;">56°</div>

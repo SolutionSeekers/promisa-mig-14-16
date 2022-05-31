@@ -28,13 +28,12 @@
                         <group>
                             <field name="medida_fito"/>
                             <field name="application_date"/>
-                            <field name="num_tipo_embalaje"/>
-                            <field name="volumen"/>
                         </group>
                         <group>
                             <field name="num_tipo_embalaje"/>
                             <field name="tipo_madera"/>
                             <field name="tipo_embalaje"/>
+                            <field name="volumen_float"/>
                         </group>
                         <group string="Tiempo de tratamiento">
                             <field name="treatment_start"/>
