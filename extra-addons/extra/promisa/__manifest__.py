@@ -40,6 +40,7 @@
         'views/stock_picking.xml',
         'views/account_move.xml',
         'views/treatment_certificate.xml',
+        'views/account_payment.xml',
         # Reports
         'reports/invoice.xml',
         'reports/remision.xml',
