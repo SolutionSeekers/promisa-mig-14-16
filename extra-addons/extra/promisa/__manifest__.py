@@ -41,6 +41,7 @@
         'views/account_move.xml',
         'views/treatment_certificate.xml',
         'views/account_payment.xml',
+        'views/product_template.xml',
         # Reports
         'reports/invoice.xml',
         'reports/remision.xml',

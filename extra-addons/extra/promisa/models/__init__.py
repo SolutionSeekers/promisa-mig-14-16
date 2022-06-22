@@ -6,3 +6,4 @@ from . import stock_picking
 from . import sale_order
 from . import treatment_certificate
 from . import account_payment
+from . import product_template
