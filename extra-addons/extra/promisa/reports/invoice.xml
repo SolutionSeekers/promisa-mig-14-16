@@ -32,11 +32,11 @@
             </div>
         </xpath>
         <xpath expr="//th[@name='th_description']" position="replace">
-            <th name="th_part_number" class="text-left"><span>Part Number</span></th>
+            <!-- <th name="th_part_number" class="text-left"><span>Part Number</span></th> -->
             <th name="th_description" class="text-left"><span>Description</span></th>
         </xpath>
         <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
-            <td name="account_invoice_line_name"><span t-field="line.product_id.default_code"/></td>
+            <!-- <td name="account_invoice_line_name"><span t-field="line.product_id.default_code"/></td> -->
             <td name="account_invoice_line_name"><span t-field="line.name"/></td>
         </xpath>
         <xpath expr="//div[@id='total']/div//table//t" position="replace">
