@@ -96,7 +96,7 @@
                     <img class="border border-dark rounded" t-att-src="qr_code_urls[o.id]"/>
                 </p>
             </div>
-            <div style="position:relative; top:700px; left:0; text-align:center;">
+            <div style="position:static; top:10px; left:0; text-align:center;">
                 <table style="width:80%; border-collapse:collapse; margin-left:10%;" >
                     <tr>
                         <td style="width:50%;padding:5px;">
