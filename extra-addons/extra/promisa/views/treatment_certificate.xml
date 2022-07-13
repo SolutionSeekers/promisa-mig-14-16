@@ -69,7 +69,7 @@
               groups="base.group_user"/>
     </data>
 
-    <record id="sequence_treatment_certificate" model="ir.sequence">
+    <!-- <record id="sequence_treatment_certificate" model="ir.sequence">
         <field name="name">Certificado de tratamiento</field>
         <field name="code">treatment.certificate</field>
         <field name="active">TRUE</field>
@@ -77,5 +77,5 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-    </record>
+    </record> -->
 </odoo>
