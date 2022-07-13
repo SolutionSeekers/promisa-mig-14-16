@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="treatment_cert_layout" model="report.paperformat">
+        <field name="name">Certificado de Tratamiento</field>
+        <field name="default" eval="True"/>
+        <field name="format">Letter</field>
+        <!-- <field name="disable_shrinking" eval="True"/> -->
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">7</field>
+        <field name="margin_bottom">7</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <report
+        id="report_dmd_treatment_certificate"
+        string="Certificado de tratamiento"
+        model="treatment.certificate"
+        report_type="qweb-pdf"
+        name="promisa.report_dmdtreatment_certificate"
+        file="promisa.report_dmdtreatment_certificate"
+        print_report_name = "('CERT - ' + object.name)"
+        paperformat="treatment_cert_layout"
+        />
+
+    <template id="report_dmdtreatment_certificate">
+        <t t-call="web.html_container">
+            <!-- <t t-foreach="docs" t-as="o"> -->
+                <t t-call="promisa.report_dmdtreatment_certificate_document"/>
+            <!-- </t> -->
+        </t>
+    </template>
+
+    <template id="report_dmdtreatment_certificate_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <!-- <t t-call="web.external_layout" t-lang="o.partner_id.lang"> -->
+                    <div class="page">
+                        <table style="border:0px solid black;">
+                            <tr style="border:0px solid green;">
+                                <td style="border:0px solid red; width:10%;">
+                                    <div style='width:100%; height:150px; padding-left:25px; background-image:url("https://promisa.int-a.indboo.net/web/image/18598?unique=f9e58bdb579e9950bd154d1c8fb14be0e8e20711"); background-size:contain; background-repeat:no-repeat;'/>
+                                </td>
+                                <td style="border:0px solid red; text-align:center; width:47%; font-size:14px;">
+                                    <h3>PROVEEDORA DE MATERIAL INDUSTRIAL SA DE CV</h3>
+                                    <span>CONSTANCIA DE APLICACIÓN DE TRATAMIENTO FITOSANITARIO A EMBALAJE DE MADERA DE ACUERDO A LO ESTABLECIDO EN LA NOM-144-SEMARNAT-2017</span><br/>
+                                    <span>R.F.C. PMI-990907-BT8</span><br/><br/>
+                                    <span>SECRETARIA DE MEDIO AMBIENTE Y RECURSOS NATURALES</span><br/>
+                                    <span>SUBSECRETARIA DE GESTIÓN PARA LA PROTECCIÓN AMBIENTAL</span><br/>
+                                    <span>DIRECCIÓN GENERAL DE GESTIÓN FORESTAL Y DE SUELOS Y/O</span><br/>
+                                    <span>DELEGACIÓN FEDERAL DE LA SEMARNAT</span>
+                                </td>
+                                <td style="border:0px solid red; width:12%;">
+                                    <div style='width:100%; height:150px; background-image:url("https://promisa.int-a.indboo.net/web/image/16135?unique=cf831720bbfd80480bf6bf2fe44f69c09c1194ef"); background-size:contain; background-repeat:no-repeat; border:0px solid blue;'/>
+                                </td>
+                                <td style="border:0px solid red; width:18%;">
+                                    <div style='width:100%; height:150px; background-image:url("https://promisa.int-a.indboo.net/web/image/16134?unique=e662e0ac3c92d6b3d57826d329968e6fe4a32436"); background-size:contain; background-repeat:no-repeat; border:0px solid blue;'/>
+                                </td>
+                                <td style="border:0px solid red; width:13%;">
+                                    <div style="font-size:20px; border:1px solid black; padding-top:10px; padding-bottom:10px; border-radius:5px 5px 0px 0px; width:100px; margin:auto; margin-bottom:0px; text-align:center;">FOLIO:</div>
+                                    <div t-esc="o.name" style="font-size:20px; border:1px solid black; padding-top:10px; padding-bottom:10px; border-radius:0px 0px 5px 5px; background-color:#aaa; width:100px; margin:auto; margin-top:0px; text-align:center;"/><br/><br/>
+                                    <strong style="font-size:14px;">Fecha: </strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')" style="font-size:14px;"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;">
+                            <tr style="border:1px solid green; width:100%">
+                                <td style="border:1px solid black; width:60%;">
+                                    <div style="width:100%; height:25px; color:white; background-color:black; font-size:13px;">
+                                        <span>INFORMACIÓN SOBRE EL TITULAR DE LA AUTORIZACIÓN DEL USO DE LA MARCA</span>
+                                    </div>
+                                    <div style="width:100%; font-size:10px;">
+                                        <table>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Nombre</strong></td><td><span>PROVEEDORA DE MATERIAL INDUSTRIAL SA DE CV</span></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">R.F.C.</strong></td><td><span>PMI-990907-BT8</span></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Domicilio</strong></td><td><span>CAMINO PROLONGACION ORTIZ RUBIO #5050</span></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Colonia</strong></td><td><span>FRACC. PARTIDO SENECU CP 32459</span></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Municipio</strong></td><td><span>JUAREZ</span></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Estado</strong></td><td><span>CHIHUAHUA</span></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Teléfono</strong></td><td><span>(656) 687-51-50</span></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Email</strong></td><td><span>apuse@dmdpromi.net</span></td></tr>
+                                        </table>
+                                    </div>
+                                </td>
+                                <td style="border:1px solid black; width:40%;">
+                                    <div style="width:100%; height:25px; color:white; background-color:black; font-size:13px;">
+                                        <span>INFORMACIÓN SOBRE EL DESTINARARIO DEL EMBALAJE TRATADO</span>
+                                    </div>
+                                    <div style="width:100%; font-size:10px;">
+                                        <table>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Razón Social</strong></td><td><span t-esc="o.partner_id.name"/></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">R.F.C.</strong></td><td><span t-esc="o.partner_id.vat"/></td></tr>
+                                            
+                                            <tr style="font-size:10px;">
+                                                <td style="width:20%;"><strong style="line-height:150%;">Domicilio</strong></td>
+                                                <td>
+                                                    <t t-if="o.partner_id.country_id.code == 'US'"><t t-if="o.partner_id.street_number"><span t-esc="o.partner_id.street_number"/></t></t>
+                                                    <span t-esc="o.partner_id.street_name"/>
+                                                    <t t-if="o.partner_id.country_id.code == 'MX'"><t t-if="o.partner_id.street_number"><span t-esc="' #' + o.partner_id.street_number"/></t></t>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr style="font-size:10px;">
+                                                <td style="width:20%;"><strong style="line-height:150%;">Colonia</strong></td>
+                                                <td>
+                                                    <span t-esc="o.partner_id.street2"/>
+                                                    <span t-esc="o.partner_id.zip"/>
+                                                </td>
+                                            </tr>
+                                            <tr style="font-size:10px;">
+                                                <td style="width:20%;"><strong style="line-height:150%;">Municipio</strong></td>
+                                                <td>
+                                                    <t t-if="o.partner_id.city_id"><span t-esc="o.partner_id.city_id.name"/></t>
+                                                    <t t-else="">
+                                                        <t t-if="o.partner_id.city"><span t-esc="o.partner_id.city"/></t>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Estado</strong></td><td><span t-esc="o.partner_id.state_id.name"/></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Teléfono</strong></td><td><span t-esc="o.partner_id.phone"/></td></tr>
+                                            <tr style="font-size:10px;"><td style="width:20%;"><strong style="line-height:150%;">Email</strong></td><td><span t-esc="o.partner_id.email"/></td></tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;">
+                            <tr style="border:1px solid green; width:100%">
+                                <td style="border:1px solid black; width:70%;">
+                                    <table>
+                                        <tr style="font-size:10px;">
+                                            <td style="width:30%; text-align:right;"><strong style="line-height:150%;">OFICIO DE AUTORIZACIÓN CENTRO DE ALMACENAMIENTO</strong></td>
+                                            <td style="width:20%; padding-left:10px;"><span>SG. AF.08-2015-017</span></td>
+                                            <td style="width:20%;"><span>DE FECHA: 15 DE ABRIL DEL 2015</span></td></tr>
+                                        <tr style="font-size:10px;">
+                                            <td style="width:30%; text-align:right;"><strong style="line-height:150%;">OFICIO DE AUTORIZACIÓN DE USO DE LA MARCA</strong></td>
+                                            <td style="width:20%; padding-left:10px;"><span>SG. SF.08-2015-047</span></td>
+                                            <td style="width:20%;"><span>DE FECHA: 31 DE MARZO DEL 2015</span></td></tr>
+                                        <tr style="font-size:10px;">
+                                            <td style="width:30%; text-align:right;"><strong style="line-height:150%;">TRATAMIENTO FITOSANITARIO APLICADO</strong></td>
+                                            <td style="width:20%; padding-left:10px;"><span t-esc="o.medida_fito"/></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="border:1px solid black; width:30%;">
+                                    <table>
+                                        <tr style="font-size:10px;">
+                                            <td style="width:25%;"><strong style="line-height:150%;">R.F.N.</strong></td>
+                                            <td style="width:35%;"><span>SG. AF.08-2015-017</span></td>
+                                            <td style="width:25%;"><strong style="line-height:150%;">Tipo</strong></td>
+                                            <td style="width:10%;"><span>TI</span></td>
+                                        </tr>
+                                        <tr style="font-size:10px;">
+                                            <td style="width:25%;"><strong style="line-height:150%;">LIBRO</strong></td>
+                                            <td style="width:35%;"><span>CHIHUAHUA</span></td>
+                                            <td style="width:25%;"><strong style="line-height:150%;">Volumen</strong></td>
+                                            <td style="width:10%;"><span>45</span></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="width:100%; height:20px; background-color:black; color:white; text-align:center">INFORMACIÓN SOBRE EL TRATAMIENTO FITOSANITARIO APLICADO</div>
+                        <table>
+                            <tr style="border:0px solid black; font-size:10px; width:100%;">
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:15%;">
+                                    MEDIDA FITOSANITARIA Y<br/>FECHA DE APLICACIÓN
+                                </td>
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:15%;">
+                                    NÚMERO DE PIEZAS Y<br/>TIPO DE EMBALAJE
+                                </td>
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:15%;">
+                                    TIPO DE MADERA
+                                </td>
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:15%;">
+                                    TIPO DE EMBALAJE<br/>TRATADO DE MADERA
+                                </td>
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:20%;">
+                                    TIEMPO DESDE EL INICIO DEL TRATAMIENTO<br/>
+                                    HASTA ALCANZAR PARAMETROS ESTABLECIDOS<br/>
+                                    EN LA NOM-144-SEMARNAT-2017
+                                </td>
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:20%;">
+                                    TIEMPO QUE PERMANECIO<br/>BAJO DICHOS PARAMETROS
+                                </td>
+                            </tr>
+                            <tr style="border:0px solid black; font-size:10px; height:70px;">
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:15%;">
+                                    <span t-esc="o.medida_fito + ' ' + str(o.application_date)"/>
+                                </td>
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:15%;">
+                                    <span t-esc="o.num_tipo_embalaje"/>
+                                </td>
+                                <td style="border:1px solid black; text-align:left; padding:10px; padding-left:25px; width:15%;">
+                                    <t t-if="o.tipo_madera=='conifera'"><span>( X ) CONIFERA</span></t>
+                                    <t t-else=""><span>( <![CDATA[&nbsp;&nbsp;]]> ) CONIFERA</span></t><br/>
+                                    <t t-if="o.tipo_madera=='noconifera'"><span>( X ) NO CONIFERA</span></t>
+                                    <t t-else=""><span>( <![CDATA[&nbsp;&nbsp;]]> ) NO CONIFERA</span></t><br/>
+                                    <t t-if="o.tipo_madera=='reconstruido'"><span>( X ) RECONSTRUIDO</span></t>
+                                    <t t-else=""><span>( <![CDATA[&nbsp;&nbsp;]]> ) RECONSTRUIDO</span></t><br/>
+                                </td>
+                                <td style="border:1px solid black; text-align:left; padding:10px; padding-left:25px; width:15%;">
+                                    <t t-if="o.tipo_embalaje=='nuevo'"><span>( X ) NUEVO</span></t>
+                                    <t t-else=""><span>( <![CDATA[&nbsp;&nbsp;]]> ) NUEVO</span></t><br/>
+                                    <t t-if="o.tipo_embalaje=='usado'"><span>( X ) USADO</span></t>
+                                    <t t-else=""><span>( <![CDATA[&nbsp;&nbsp;]]> ) USADO</span></t><br/>
+                                    <t t-if="o.tipo_embalaje=='reconstruido'"><span>( X ) RECONSTRUIDO</span></t>
+                                    <t t-else=""><span>( <![CDATA[&nbsp;&nbsp;]]> ) RECONSTRUIDO</span></t><br/>
+                                </td>
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:20%;">
+                                    <span t-esc="str(context_timestamp(o.treatment_start).strftime('%H:%M:%S')) + ' A ' + str(context_timestamp(o.treatment_reach).strftime('%H:%M:%S')) + ' (horas)= ' + str(o.treatment_reach-o.treatment_start)"/>
+                                </td>
+                                <td style="border:1px solid black; text-align:center; padding:10px; width:20%;">
+                                    <span t-esc="str(context_timestamp(o.treatment_reach).strftime('%H:%M:%S')) + ' A ' + str(context_timestamp(o.treatment_end).strftime('%H:%M:%S')) + ' (horas)= ' + str(o.treatment_end-o.treatment_reach)"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%; border:1px solid black;">
+                            <tr style="width:100%;">
+                                <td style="width:33%;">
+                                    <div style="width:100%; height:150px; border:0px solid black;"><span t-esc="o.note"/></div>
+                                    <div style="width:85%; height:150px; border:0px solid black; text-align:right;">
+                                        CONCENTRACIÓN INICIAL: <strong>NO APLICA</strong><br/>
+                                        CONCENTRACIÓN FINAL: <strong>NO APLICA</strong><br/>
+                                        CANTIDAD UTILIZADA: <strong>NO APLICA</strong><br/><br/>
+                                        LÍNEA: <span t-esc="o.line"/>
+                                    </div>
+                                </td>
+                                <td style="width:33%;">
+                                    <div style='width:100%; height:200px; border:0px solid red; text-align:center;'>
+                                        <div style='margin:auto; width:135px; height:190px; border:0px solid blue; background-image:url("https://promisa.int-a.indboo.net/web/image/16137?unique=1db367c4f834df82b6e460d479d6975ae249dc8d"); background-size:contain; background-repeat:no-repeat;'/>
+                                    </div>
+                                    <div style="width:100%; height:100px; border-top:1px solid black; text-align:center;">
+                                        Juan Francisco Barraza Ayala<br/><br/><br/>
+                                        <span style="margin-top:20px;">NOMBRE Y FIRMA DEL TITULAR DE LA MARCA</span>
+                                    </div>
+                                </td>
+                                <td style="width:33%; text-align:center;">
+                                    <div style="margin-left:30%; width:70%; height:30px; border:1px solid black; background-color:black; color:white;">VOLUMEN EN METROS CÚBICOS</div>
+                                    <div style="margin-left:30%; width:70%; height:50px; border:1px solid black; line-height:49px;"><span t-esc="str(o.volumen_float)"/></div>
+                                    
+                                    <div style="margin-left:30%; width:70%; height:30px; border:1px solid black; margin-top:10px; background-color:black; color:white;">TEMPERATURA DEL TRATAMIENTO</div>
+                                    <div style="margin-left:30%; width:70%; height:50px; border:1px solid black; line-height:49px;">56°</div>
+
+                                    <div style="width:100%; height:100px; border:0px solid red; line-height:90px;"><strong>Original: Propietario del embalaje</strong></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                <!-- </t> -->
+            </t>
+        </t>
+    </template>
+</odoo>

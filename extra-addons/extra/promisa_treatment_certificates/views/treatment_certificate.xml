@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="tree_treatment_certificate_view" model="ir.ui.view">
+        <field name="name">treatment.certificate.tree.view</field>
+        <field name="model">treatment.certificate</field>
+        <field name="arch" type="xml">
+            <tree string="Certificados de tratamiento">
+                <field name="id"/>
+                <field name="line"/>
+                <field name="name"/>
+                <field name="application_date"/>
+            </tree> 
+        </field>
+    </record>
+    
+    <record id="form_treatment_certificate_view" model="ir.ui.view">
+        <field name="name">treatment.certificate.form.view</field>
+        <field name="model">treatment.certificate</field>
+        <field name="arch" type="xml">
+            <form string="Certificados de tratamiento">
+                <sheet>
+                    <group>
+                        <group string="Datos del certificado">
+                            <field name="name"/>
+                            <field name="line"/>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="medida_fito"/>
+                            <field name="application_date"/>
+                        </group>
+                        <group>
+                            <field name="num_tipo_embalaje"/>
+                            <field name="tipo_madera"/>
+                            <field name="tipo_embalaje"/>
+                            <field name="volumen_float"/>
+                        </group>
+                        <group string="Tiempo de tratamiento">
+                            <field name="treatment_start"/>
+                            <field name="treatment_reach"/>
+                            <field name="treatment_end"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form> 
+        </field>
+    </record>
+
+    <record id="action_tree_treatment_certificate" model="ir.actions.act_window">
+        <field name="name">Certificados de Tratamiento</field>
+        <field name="res_model">treatment.certificate</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="tree_treatment_certificate_view" />
+        <field name="context">{}</field>
+    </record>
+
+    <data>
+        <menuitem
+              name="Certificados de tratamiento"
+              parent="sale.sale_menu_root"
+              id="menu_action_tree_treatment_certificate"
+              action="action_tree_treatment_certificate"
+              sequence="7"
+              groups="base.group_user"/>
+    </data>
+
+    <record id="sequence_treatment_certificate" model="ir.sequence">
+        <field name="name">Certificado de tratamiento</field>
+        <field name="code">treatment.certificate</field>
+        <field name="active">TRUE</field>
+        <field name="prefix"></field>
+        <field name="padding">6</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

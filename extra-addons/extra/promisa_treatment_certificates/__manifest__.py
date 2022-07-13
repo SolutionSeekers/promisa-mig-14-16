@@ -3,7 +3,7 @@
     "name": "Promisa's ERP Instance",
     "author": "Indboo",
     "summary": """
-    All the necessary modules to auto install our service instance
+    Promisa's treatment certificates
     """,
     "website": "https://odoo.indboo.net",
     "license": "LGPL-3",
@@ -22,30 +22,25 @@
 
         # Sales
         # Tools
-        'product',
-        'stock',
-        'purchase',
-        'sale',
-        'nomina_cfdi_ee',
     ],
     "data": [
         # Main Configuration
         # Data
         # Security
-        'security/security.xml',
+        
         # Views
-        'views/purchase_order.xml',
-        'views/hr_employee.xml',
-        'views/sale_order.xml',
-        'views/stock_picking.xml',
-        'views/account_move.xml',
-        # 'views/treatment_certificate.xml',
-        'views/account_payment.xml',
-        'views/product_template.xml',
+        # 'views/purchase_order.xml',
+        # 'views/hr_employee.xml',
+        # 'views/sale_order.xml',
+        # 'views/stock_picking.xml',
+        # 'views/account_move.xml',
+        'views/treatment_certificate.xml',
+        # 'views/account_payment.xml',
+        # 'views/product_template.xml',
         # Reports
-        'reports/invoice.xml',
-        'reports/remision.xml',
-        # 'reports/certificado_tratamiento.xml',
+        # 'reports/invoice.xml',
+        # 'reports/remision.xml',
+        'reports/certificado_tratamiento.xml',
         # Wizards (One Per Wizard)
         # Stages Data
     ],
@@ -55,6 +50,6 @@
     ],
     "qweb": [''],
     "auto_install": False,
-    "application": True,
+    "application": False,
     "installable": True,
 }
