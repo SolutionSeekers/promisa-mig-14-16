@@ -20,8 +20,8 @@
         string="Certificado de tratamiento"
         model="treatment.certificate"
         report_type="qweb-pdf"
-        name="promisa.report_dmdtreatment_certificate"
-        file="promisa.report_dmdtreatment_certificate"
+        name="promisa_treatment_certificates.report_dmdtreatment_certificate"
+        file="promisa_treatment_certificates.report_dmdtreatment_certificate"
         print_report_name = "('CERT - ' + object.name)"
         paperformat="treatment_cert_layout"
         />
@@ -29,7 +29,7 @@
     <template id="report_dmdtreatment_certificate">
         <t t-call="web.html_container">
             <!-- <t t-foreach="docs" t-as="o"> -->
-                <t t-call="promisa.report_dmdtreatment_certificate_document"/>
+                <t t-call="promisa_treatment_certificates.report_dmdtreatment_certificate_document"/>
             <!-- </t> -->
         </t>
     </template>
@@ -62,7 +62,7 @@
                                 <td style="border:0px solid red; width:13%;">
                                     <div style="font-size:20px; border:1px solid black; padding-top:10px; padding-bottom:10px; border-radius:5px 5px 0px 0px; width:100px; margin:auto; margin-bottom:0px; text-align:center;">FOLIO:</div>
                                     <div t-esc="o.name" style="font-size:20px; border:1px solid black; padding-top:10px; padding-bottom:10px; border-radius:0px 0px 5px 5px; background-color:#aaa; width:100px; margin:auto; margin-top:0px; text-align:center;"/><br/><br/>
-                                    <strong style="font-size:14px;">Fecha: </strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')" style="font-size:14px;"/>
+                                    <strong style="font-size:14px;">Fecha: </strong><span t-esc="o.fecha" style="font-size:14px;"/>
                                 </td>
                             </tr>
                         </table>

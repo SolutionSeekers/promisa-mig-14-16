@@ -28,6 +28,7 @@
                         <group>
                             <field name="medida_fito"/>
                             <field name="application_date"/>
+                            <field name="fecha"/>
                         </group>
                         <group>
                             <field name="num_tipo_embalaje"/>

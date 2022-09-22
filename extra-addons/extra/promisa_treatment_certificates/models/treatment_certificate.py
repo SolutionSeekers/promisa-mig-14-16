@@ -17,6 +17,7 @@ class TreatmentCertificate(models.Model):
     treatment_start = fields.Datetime(string='Inicio de tratamiento', store=True)
     treatment_reach = fields.Datetime(string='Parametros alcanzados', store=True)
     treatment_end = fields.Datetime(string='Termino de tratamiento', store=True)
+    fecha = fields.Date(string="Fecha de emisión", store=True) 
     tipo_madera = fields.Selection([
         ('conifera', 'CONIFERA'),
         ('noconifera', 'NO CONIFERA'),
