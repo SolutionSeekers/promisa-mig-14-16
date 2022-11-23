@@ -10,3 +10,7 @@
 	path = extra-addons/reporting-engine
 	url = https://github.com/elmeriniemela/reporting-engine.git
 	branch = 14.0-mig-report_py3o
+[submodule "extra-addons/stock-logistics-workflow"]
+	path = extra-addons/stock-logistics-workflow
+	url = https://github.com/OCA/stock-logistics-workflow
+	branch = 14.0
