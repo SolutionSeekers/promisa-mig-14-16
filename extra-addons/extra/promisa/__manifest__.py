@@ -27,6 +27,7 @@
         'purchase',
         'sale',
         'nomina_cfdi_ee',
+        'account',
     ],
     "data": [
         # Main Configuration
