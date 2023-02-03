@@ -14,3 +14,7 @@
 	path = extra-addons/stock-logistics-workflow
 	url = https://github.com/OCA/stock-logistics-workflow
 	branch = 14.0
+[submodule "extra-addons/zk_machine"]
+	path = extra-addons/zk_machine
+	url = git@gitlab.com:juarez-technology/zk_machine.git
+	branch = 14.0
