@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_inherit_promisa" model="ir.ui.view">
+        <field name="name">purchase.order.inherit.promisa</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@id='draft_confirm']" position="replace">
+                <button name="button_confirm" type="object" states="draft" string="Confirm Order" id="draft_confirm" groups="base.group_partner_manager"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="purchase_form_promisa_2" model="ir.ui.view">
+       <field name="name">purchase.form.inherited.2</field>
+       <field name="model">purchase.order</field>
+       <field name="inherit_id" ref="purchase.purchase_order_form"/>
+       <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='price_unit']" position="attributes">
+                <attribute name="readonly">False</attribute>
+            </xpath>
+       </field>
+   </record>
+</odoo>
