@@ -80,4 +80,24 @@
             </xpath>
         </field>
     </record>
+    <record id="hr_employee_kanban_inherit_promisa" model="ir.ui.view">
+        <field name="name">hr.employee.kanban.inherit.promisa</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//ul" position="inside">
+                <li><field name="no_employee"/></li>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_employee_search_inherit_promisa" model="ir.ui.view">
+        <field name="name">hr.employee.seearch.inherit.promisa</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="no_employee"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
