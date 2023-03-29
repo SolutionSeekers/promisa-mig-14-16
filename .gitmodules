@@ -2,10 +2,6 @@
 	path = extra-addons/enterprise
 	url = git@git.indboo.com:Indboo-dev/enterprise.git
 	branch = 14.0
-[submodule "extra-addons/itadmin-indboo"]
-	path = extra-addons/itadmin-indboo
-	url = git@git.indboo.com:Indboo-dev/itadmin-indboo.git
-	branch = 14.0
 [submodule "extra-addons/reporting-engine"]
 	path = extra-addons/reporting-engine
 	url = https://github.com/elmeriniemela/reporting-engine.git

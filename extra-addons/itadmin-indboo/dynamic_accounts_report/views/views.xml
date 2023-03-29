@@ -1,0 +1,121 @@
+<odoo>
+    <data>
+
+        <menuitem id="account_reports_ins" sequence="10"
+                      name="Reportes contables" parent="account.menu_finance_reports"/>
+
+ <!--        <menuitem id="account_reports_ins_wiz" sequence="15"
+                      name="Accounting Reports" parent="account.menu_finance_reports"/> -->
+
+        <!-- ============ Financial Report =============== -->
+
+        <record id="view_ins_account_financial_report_form" model="ir.ui.view">
+            <field name="name">account.financial.report.form</field>
+            <field name="model">ins.account.financial.report</field>
+            <field name="arch" type="xml">
+                <form string="Reporte contable">
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="parent_id"/>
+                        <field name="sequence"/>
+                        <field name="type"/>
+                        <field name="sign"/>
+                        <field name="range_selection" attrs="{'required':[('type','in',['accounts','account_type'])]}"/>
+                        <field name="style_overwrite" invisible="1"/>
+                    </group>
+                    <notebook
+                            attrs="{'invisible': [('type','not in',['accounts','account_type', 'account_report'])]}">
+                        <page string="Report">
+                            <group>
+                                <field name="display_detail"
+                                       attrs="{'invisible': [('type','not in',['accounts','account_type'])]}"/>
+                                <field name="account_report_id"
+                                       attrs="{'invisible': [('type', '!=', 'account_report')]}"/>
+                            </group>
+                            <field name="account_ids"
+                                   attrs="{'invisible': [('type', '!=', 'accounts')]}"/>
+                            <field name="account_type_ids"
+                                   attrs="{'invisible': [('type', '!=', 'account_type')]}"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ins_account_financial_report_tree" model="ir.ui.view">
+            <field name="name">account.financial.report.tree</field>
+            <field name="model">ins.account.financial.report</field>
+            <field name="arch" type="xml">
+                <tree string="Reporte contable">
+                    <field name="name"/>
+                    <field name="parent_id" invisible="1"/>
+                    <field name="type"/>
+                    <field name="account_report_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ins_account_financial_report_search" model="ir.ui.view">
+            <field name="name">account.financial.report.search</field>
+            <field name="model">ins.account.financial.report</field>
+            <field name="arch" type="xml">
+                <search string="Account Report">
+                    <field name="name" string="Account Report"/>
+                    <field name="type"/>
+                    <field name="account_report_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Parent Report"
+                                name="filter_parent_rep"
+                                domain=""
+                                context="{'group_by':'parent_id'}"/>
+                        <filter string="Report Type"
+                                name="filter_rep_type"
+                                domain="[]"
+                                context="{'group_by':'type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_ins_account_financial_report_tree"
+                model="ir.actions.act_window">
+            <field name="name">Financial Reports</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ins.account.financial.report</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id"
+                   ref="view_ins_account_financial_report_search"/>
+            <field name="view_id" ref="view_ins_account_financial_report_tree"/>
+        </record>
+
+        <menuitem id="ins_account_financial_report"
+                  name="Financial Reports"
+                  action="action_ins_account_financial_report_tree"
+                  sequence="500"
+                  parent="account.account_account_menu"/>
+
+        <menuitem id="dynamic_report_accounting" sequence="19"
+              name="Reportes financieros" parent="account.menu_finance_reports"/>
+
+        <record id="action_general_ledger" model="ir.actions.client">
+            <field name="name">Libro mayor</field>
+            <field name="tag">g_l</field>
+        </record>
+        <menuitem id="menu_general_ledger"  action="action_general_ledger"
+              name="Libro mayor" parent="dynamic_report_accounting"/>
+
+        <record id="action_partner_ledger" model="ir.actions.client">
+            <field name="name">Libro de clientes</field>
+            <field name="tag">p_l</field>
+        </record>
+        <menuitem id="menu_partner_ledger"  action="action_partner_ledger"
+              name="Libro de clientes" parent="dynamic_report_accounting"/>
+
+        <record id="action_ageing_partner" model="ir.actions.client">
+            <field name="name">Antiguedad de saldos</field>
+            <field name="tag">p_a</field>
+        </record>
+        <menuitem id="menu_report_ageing"  action="action_ageing_partner"
+              name="Antiguedad de saldos" parent="dynamic_report_accounting"/>
+    </data>
+</odoo>

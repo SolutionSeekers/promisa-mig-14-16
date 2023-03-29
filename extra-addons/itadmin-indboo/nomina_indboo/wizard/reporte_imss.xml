@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<report id="action_report_imss_payslip_total" 
+			model="hr.payslip.run" 
+			string="Reporte IMSS Total" 
+			report_type="xlsx" 
+			name="nomina_cfdi_extras_ee.report_imss_payslip_total" 
+			file="nomina_cfdi_extras_ee.report_imss_payslip_total"
+	        attachment_use="False"/>
+
+</odoo>
